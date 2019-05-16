@@ -1,11 +1,16 @@
+/*
+ * Feito por Roddas Cabral em 01/05/2019
+ * 
+ * Permutação circular de uma string
+ * 
+ * */
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 #include<locale.h>
 
-
 unsigned int fatorial(unsigned int);
-void rotacionar(char *,unsigned int);
 
 const int SIZE = 255;
 
@@ -18,7 +23,6 @@ int main(void)
 	
 	unsigned int tamanho = strlen(string) -1;
 	string[tamanho] = 0;
-	tamanho = fatorial(tamanho);
 	
 	printf("A string '%s' possui %u permutações possíveis ..\n",string,tamanho);
 	
@@ -45,18 +49,4 @@ void rotacionar(char *string,unsigned int tamanho)
 	
 	strcpy(string,tmp);
 	free(tmp);
-}
-
-
-unsigned int fatorial(unsigned int valor)
-{
-	int ret = 1;
-	
-	int contador;
-	for(contador = valor; contador > 0; contador--)
-	{
-		ret *= contador;
-	}
-	
-	return ret;
 }
