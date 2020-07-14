@@ -16,7 +16,6 @@ ponteiro nova_chave(int);
 ponteiro procurar(ponteiro,int);
 void inserir(ponteiro,int,int);
 void visualizar(ponteiro);
-void pad(char,int);
 void juntar(ponteiro ,ponteiro );
 
 int main(void)
@@ -106,11 +105,6 @@ ponteiro procurar(ponteiro raiz,int valor)
 		ptr = ptr->irmao;
 	}
 	return NULL;
-}
-void pad(char  ch,int nivel)
-{
-	for(int a = 0; a < nivel;a++)
-		printf("%c",ch);
 }
 void juntar(ponteiro root,ponteiro branch)
 {
