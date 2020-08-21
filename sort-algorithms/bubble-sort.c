@@ -2,41 +2,33 @@
 #include<stdlib.h>
 
 #define lu size_t
+#define type int
+#define less(A,B) ((A) < (B))
+#define lesseq(A,B) ((A)<= (B))
+#define swap(A,B) { type tmp = B; B = A; A = tmp; }
+#define compare_swap(A,B){ if(less(A,B)) swap(A,B); }
 
-void bubble_sort(int *,lu);
-void swap(int *,int *);
-void print_array(int *,lu);
+void bubble_sort(type *,lu ,lu );
+void print_array(type *,lu ,lu );
 
 int main(void)
 {
-	int vector[] = {1,23,0,-2,434,5,66,7765,56,55,56,345,345,34532454,24};
-	lu size = 15;
-	printf("Original array : ");
-	print_array(vector,size);
-	bubble_sort(vector,size);
-	printf("Array after sorted using Bubble Sort : ");
-	print_array(vector,size);
+	type array[] = {12,324,5,7,-2,5,6,8};
+	
+	print_array(array,0,8);
+	bubble_sort(array,0,8);
+	print_array(array,0,8);
+	
 	return EXIT_SUCCESS;
 }
-void bubble_sort(int *vector,lu size)
+void bubble_sort(type *array,lu left,lu right)
 {
-	for(lu i = 0; i < size;i++)
-	{
-		for(lu j = i+1; j < size;j++)
-		{
-			if(vector[i] > vector[j])
-				swap(&vector[i],&vector[j]);
-		}
-	}
+	for(lu i = left;i <= right;i++)
+		for(int j = i+1; j <= right;j++)
+			compare_swap(array[j],array[i]);
 }
-void swap(int *a,int *b)
+void print_array(type *array,lu left,lu right)
 {
-	int tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-void print_array(int *vector,lu size)
-{
-	for(lu a = 0 ; a < size;a++)
-		printf("%d%s",vector[a],(a+1 == size ? "\n" : " "));
+	for(lu a = left; a < right;a++)
+		printf("%d%s",array[a],(a+1 == right ? "\n" : " "));
 }
