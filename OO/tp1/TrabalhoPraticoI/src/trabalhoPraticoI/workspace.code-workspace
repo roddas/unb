@@ -1,0 +1,71 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\..\\..\\..\\portfolio"
+		},
+		{
+			"path": "..\\..\\..\\..\\..\\bim360-alfa-viewerV2"
+		},
+		{
+			"path": "..\\..\\..\\..\\..\\autodesk_bim360"
+		},
+		{
+			"path": "..\\..\\..\\..\\..\\nodejsTests"
+		},
+		{
+			"path": "..\\..\\..\\..\\..\\crud"
+		},
+		{
+			"path": "..\\..\\..\\..\\..\\ArcGIS"
+		},
+		{
+			"path": "..\\..\\..\\..\\..\\rest"
+		},
+		{
+			"path": "..\\..\\..\\..\\..\\vulnserver"
+		},
+		{
+			"path": "..\\..\\..\\..\\..\\typescript"
+		},
+		{
+			"path": "..\\..\\..\\..\\..\\js"
+		},
+		{
+			"path": "..\\..\\..\\..\\TrabalhoPraticoI"
+		},
+		{
+			"path": "..\\..\\.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "portfolio",
+		"sqltools.connections": [
+			{
+				"mysqlOptions": {
+					"authProtocol": "default"
+				},
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 3306,
+				"askForPassword": true,
+				"driver": "MySQL",
+				"name": "portfolio",
+				"database": "portfolio",
+				"username": "dataManagementUser"
+			},
+			{
+				"mysqlOptions": {
+					"authProtocol": "default"
+				},
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 3306,
+				"askForPassword": true,
+				"driver": "MySQL",
+				"name": "teste",
+				"database": "testedb",
+				"username": " dataManagementUser"
+			}
+		]
+	}
+}
