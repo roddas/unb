@@ -1,0 +1,45 @@
+.data
+	equals: .asciiz "The numbers are equals :-D\n"
+	n_equals: .asciiz "The numbers are not equals :-(\n"
+	first_input : .asciiz "Insert the first number : "
+	second_input : .asciiz "Insert the second number : "
+	
+.text
+
+equal_label:
+	li $v0, 4
+	la $a0, equals
+	syscall
+	
+	j $ra
+
+not_equal_label:
+	li $v0, 4
+	la $a0, n_equals
+	syscall
+	
+	j $ra
+
+main:
+	li $v0, 4
+	la $a0, first_input
+	syscall
+	
+	li $v0, 5
+	syscall
+	move $t0, $v0
+	
+	li $v0, 4
+	la $a0, second_input
+	syscall
+	
+	li $v0, 5
+	syscall
+	move $t1, $v0
+	
+	beq $t0, $t1 equal_label
+	bne $t0, $t1 not_equal_label
+	
+	li $v0,10
+	syscall
+

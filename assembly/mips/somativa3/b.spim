@@ -1,0 +1,36 @@
+.data
+	thums_odd: .asciiz "THUMS THUMS THUMS\n"
+	thums_even: .asciiz "THUMS THUMS THUMS THUMS THUMS THUMS\n"
+
+.text
+exit:
+	jr $ra
+	
+loop:
+	addi $t0, $t0, 1
+	bgt $t0, $a1, exit
+	andi $t1, $t0, 1
+	beq $t1,$zero, print_even
+	beq $t1, 1, print_odd
+
+print_odd:
+	li $v0, 4
+	la $a0, thums_odd
+	syscall
+	j loop
+
+print_even:
+	li $v0, 4
+	la $a0, thums_even
+	syscall
+	j loop
+
+
+
+.globl main
+
+main:
+	li $v0, 5
+	syscall
+	move $a1, $v0
+	j loop

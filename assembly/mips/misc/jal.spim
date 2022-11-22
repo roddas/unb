@@ -1,0 +1,16 @@
+.data
+	message: .asciiz "Jump instruction done"
+.text
+
+main:
+	jal jmp
+	
+	li $v0,10
+	syscall
+	
+jmp:
+	li $v0,4
+	la $a0, message
+	syscall
+	
+	jr $ra

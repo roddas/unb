@@ -1,0 +1,47 @@
+.data
+	pergunta1 : .ascii "Insira o teu nome : "
+	pergunta2 : .ascii "Insira a tua idade: "
+	resposta1 : .ascii " você tem "
+	resposta2 : .ascii " anos de idade..\n"
+	nome : .space 21
+	
+.text
+	main:
+	
+		li $v0, 4
+		la $a0, pergunta1
+		syscall
+		
+		li $v0, 8
+		la $a0,nome
+		li $a1,21
+		syscall
+		
+		li $v0, 4
+		la $a0, pergunta2
+		syscall
+		
+		li $v0,5
+		syscall
+		
+		move $t0, $v0
+		
+		li $v0, 4
+		la $a0, nome
+		syscall
+		
+		li $v0,1
+		la $a0, ($t0)
+		syscall
+		
+		li $va, 4
+		la $a0, resposta1
+		syscall
+		
+		la $a0,resposta2
+		syscall
+		
+		
+		li $v0,10
+		syscall
+		

@@ -1,0 +1,12 @@
+.data
+	a : .word 13
+	b : .word 65
+.text
+	lw $s0, a
+	lw $s1, b
+	
+	sub $t0, $s0,$s1
+	
+	li $v0, 1
+	move $a0, $t0
+	syscall

@@ -1,0 +1,150 @@
+.data
+	text_add: .asciiz "ADD: "
+	new_line: .asciiz "\n"
+	close_parenthesis: .asciiz "): "
+	text_sub: .asciiz "SUB: "
+	text_and: .asciiz "AND: "
+	text_or: .asciiz "OR: "
+	text_xor: .asciiz "XOR: "
+	text_mask: .asciiz "MASK: "
+	text_sll: .asciiz "SLL("
+	text_srl: .asciiz "SRL("
+		
+
+.text
+
+.globl main
+main:
+	
+	# Recebe as entradas
+	li $v0, 5
+	syscall
+	
+	move $s0, $v0
+
+	li $v0, 5
+	syscall
+	move $s1, $v0
+	
+	li $v0, 5
+	syscall
+	move $s2, $v0
+	
+	
+	# Efetua as operacoes
+	add $t0, $s0, $s1
+	sub $t1, $s0, $s1
+	and $t2, $s0, $s1
+	or $t3, $s0, $s1
+	xor $t4, $s0, $s1
+	andi $t5, $s2, 31
+	sllv $t6, $s0, $t5
+	srlv $t7, $s1, $t5
+	
+	# Apresenta o resultado de ADD , que está  contido em $t0
+	li $v0, 4
+	la $a0, text_add
+	syscall
+	
+	li $v0, 1
+	la $a0, ($t0)
+	syscall
+	
+	li $v0, 4
+	la $a0, new_line
+	syscall
+	
+	# Apresenta o resultado de SUB , que está  contido em $t1
+	la $a0, text_sub
+	syscall
+	
+	li $v0, 1
+	la $a0, ($t1)
+	syscall
+	
+	li $v0, 4
+	la $a0, new_line
+	syscall
+	
+	# Apresenta o resultado de AND , que está  contido em $t2
+	la $a0, text_and
+	syscall
+	
+	li $v0, 1
+	la $a0, ($t2)
+	syscall
+	
+	li $v0, 4
+	la $a0, new_line
+	syscall
+	
+	# Apresenta o resultado de OR , que está  contido em $t3
+	li $v0, 4
+	la $a0, text_or
+	syscall
+	
+	li $v0, 1
+	la $a0, ($t3)
+	syscall
+	
+	li $v0, 4
+	la $a0, new_line
+	syscall
+	
+	# Apresenta o resultado de XOR , que está  contido em $t4
+	la $a0, text_xor
+	syscall
+	
+	li $v0, 1
+	la $a0, ($t4)
+	syscall
+	
+	li $v0, 4
+	la $a0, new_line
+	syscall
+	
+	# Apresenta o resultado da máscara , que está  contido em $t5
+	la $a0, text_mask
+	syscall
+	li $v0, 1
+	la $a0, ($t5)
+	syscall
+	
+	li $v0, 4
+	la $a0, new_line
+	syscall
+	
+	# Apresenta o resultado do SLL , que está  contido em $t6
+	la $a0, text_sll
+	syscall
+	li $v0, 1
+	la $a0, ($t5)
+	syscall
+	li $v0, 4
+	la $a0, close_parenthesis
+	syscall
+	li $v0, 1
+	la $a0, ($t6)
+	syscall
+	li $v0, 4
+	la $a0, new_line
+	syscall
+	
+	# Apresenta o resultado do SRL , que está  contido em $t7
+	la $a0, text_srl
+	syscall
+	li $v0, 1
+	la $a0, ($t5)
+	syscall
+	li $v0, 4
+	la $a0, close_parenthesis
+	syscall
+	li $v0, 1
+	la $a0, ($t7)
+	syscall
+	li $v0, 4
+	la $a0, new_line
+	syscall
+	
+	li $v0,10
+	syscall

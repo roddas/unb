@@ -1,0 +1,76 @@
+.data
+	new_line: .asciiz "\n"
+    no: .asciiz "nao\n"
+    yes: .asciiz "sim\n"
+    invalid_message: .asciiz "Entrada invalida.\n"
+    
+.text
+
+exit:
+	li $v0, 10
+	syscall
+
+exit_for:
+	jr $ra
+
+for:
+	mul $t1, $t0, $t0
+	bgt $t1, $s2, exit_for
+	
+	divu $s2, $t0
+	mfhi  $v0
+	
+	beq $v0, $zero, is_not_prime
+	
+	addu $t0,$t0, 1
+	j for
+
+invalid_input:
+	li $v0, 4
+	la $a0, invalid_message
+	syscall
+	
+	b exit
+	
+is_not_prime:
+	li $v0, 4
+	la $a0, no
+	syscall
+	
+	b exit
+	
+is_prime:
+	ble $s2, 1, is_not_prime
+
+	li $t0, 2
+	li $v0, 1
+	
+	sw $ra, 12($sp)
+	jal for
+	lw $ra, 12($sp)
+	
+	jr $ra
+	
+.globl main
+
+main:
+
+	# read the integer input 
+	la $v0, 5
+	syscall
+	
+	# saves the input on $s0 register
+	move $s2, $v0
+	
+	ble $s2, $zero, invalid_input
+	
+	jal is_prime
+	move $s4, $v0
+	
+	# -----
+	li $v0, 4
+	la $a0, yes
+	syscall
+	
+	
+	j exit

@@ -1,0 +1,50 @@
+.data
+	input: .space 35
+.text
+
+convert_hexa:
+	bgt $a0, 9, greater
+	addi $v0, $a0, 48 
+	jr $ra
+	
+greater:
+	addi $v0, $a0, -10 
+	addi $v0, $v0, 97
+
+	jr $ra
+
+loop:
+	lb $t0, ($s0)
+	beq $t0, 0xA, exit
+	beq $t0, 0x0, exit
+	
+	srl $a0, $t0, 4 
+	jal convert_hexa
+	
+	li $v0, 1 #Printamos
+	syscall
+	
+	andi $a0, $t0, 0xF
+	jal convert_hexa
+	
+	move $a0, $v0
+	li $v0, 11
+	syscall
+	
+	addi $s0, $s0, 1 
+	j loop
+	
+exit:
+	li $v0, 10
+    	syscall
+.globl main
+main:
+	
+	li $v0, 8
+	la $a0, input
+	la $a1, 33 
+	move $s0, $a0
+	syscall
+	
+	j loop 
+
