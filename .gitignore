@@ -1,3 +1,5 @@
 saida
 *.o
 out
+tmp
+tmp/
