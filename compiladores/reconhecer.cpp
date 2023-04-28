@@ -5,6 +5,7 @@ using namespace std;
 char lookahead;
 
 void reconhecer(char);
+char next_char(void);
 
 int main(void){
 	
@@ -16,4 +17,7 @@ void reconhecer(char token){
 		lookahead = next_char();
 	else
 		erro();
+}
+char next_char(void){
+	return getchar();
 }
