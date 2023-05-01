@@ -13,8 +13,9 @@ void digito(void);
 void resto(void);
 
 int main(void){
-	token t = proximo_token();
-	cout << t << endl;
+	lookahead = proximo_token();
+	expr();
+	cout << endl;
 	return 0;
 }
 void resto(void){
